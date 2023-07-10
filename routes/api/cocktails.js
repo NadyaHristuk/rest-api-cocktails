@@ -2,11 +2,11 @@ const express = require("express");
 
 const router = express.Router();
 
-const controllers = require("../../../controllers/drinks");
+const controllers = require("../../controllers/drinks");
 
 // const middlewares = require("../../middlewares");
 // const schemas = require("../../schemas");
-const controllerWrapper = require("../../../helpers/controllerWrapper");
+const controllerWrapper = require("../../helpers/controllerWrapper");
 
 // router.get("/", controllerWrapper(controllers.getAll));
 // router.get("/:letter", controllerWrapper(controllers.getById));

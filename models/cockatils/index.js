@@ -1,34 +1,29 @@
 const {Schema, model} = require("mongoose");
 
-const drinkSchema = new Schema(
+const cocktailsSchema = new Schema(
     {
-        strDrink: String,
-        strDrinkAlternate: String,
-        strTags: String,
-        strVideo: String,
-        strCategory: String,
-        strIBA: String,
-        strAlcoholic: String,
-        strGlass: String,
-        strInstructions: String,
-        strInstructionsES: String,
-        strInstructionsDE: String,
-        strInstructionsFR: String,
-        strInstructionsIT: String,
-        strInstructionsRU: String,
-        strInstructionsPL: String,
-        strInstructionsUK: String,
-        strDrinkThumb: String,
-        strIngredient: [String,],
-        strMeasure: [String,],
-        strImageSource: String,
-        strImageAttribution: String,
-        strCreativeCommonsConfirmed: String,
-        dateModified: String,
+        drink: String,
+        drinkAlternate: String,
+        tags: String,
+        video: String,
+        category: String,
+        IBA: String,
+        alcoholic: String,
+        glass: String,
+        instructions: String,
+        instructionsES: String,
+        instructionsDE: String,
+        instructionsFR: String,
+        instructionsIT: String,
+        instructionsRU: String,
+        instructionsPL: String,
+        sinstructionsUK: String,
+        drinkThumb: String,
+        ingredients: [Object]        
     }
 );
 
-const Drinks = model("drinks", drinkSchema);
+const Сocktail = model("cocktails", cocktailsSchema);
 
-module.exports = Drinks;
+module.exports = Сocktail;
 

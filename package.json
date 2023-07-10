@@ -1,10 +1,10 @@
 {
-  "name": "template",
-  "version": "0.0.0",
+  "name": "drink_master_backend",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start:dev": "cross-env NODE_ENV=production node ./server.js",
-    "start": "cross-env NODE_ENV=development nodemon ./server.js",
+    "start": "node ./server.js",
+    "start:dev": "cross-env NODE_ENV=development nodemon ./server.js",
     "lint": "eslint **/*.js",
     "lint:fix": "eslint --fix **/*.js"
   },
