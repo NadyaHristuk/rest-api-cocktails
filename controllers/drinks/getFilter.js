@@ -10,16 +10,16 @@ async function getFilter(req, res) {
             if (value === "list"){
             switch (key) {
                 case "c":
-                    result = "strCategory";
+                    result = "category";
                     break;
                 case "g":
-                    result = "strGlass";
+                    result = "glass";
                     break;
                 case "i":
-                    result = "strIngredient";
+                    result = "ingredient";
                     break;
                 case "a":
-                    result = "strAlcoholic";
+                    result = "alcoholic";
                     break;
             }}
         }
