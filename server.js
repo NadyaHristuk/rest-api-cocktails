@@ -4,16 +4,17 @@ const app = require("./app");
 
 dotenv.config();
 
-const { DB_HOST } = process.env;
+const { DB_HOST, PORT } = process.env;
 // DB_HOST=mongodb://localhost:27017/cocktails
 async function start() {
   try {
+    mongoose.set("strictQuery", false);
     await mongoose.connect(DB_HOST);
 
     console.log("Database connection successful");
 
-    app.listen(3000, () => {
-      console.log("Server running. Use our API on port: 3000");
+    app.listen(PORT, () => {
+      console.log(`Server running. Use our API on port: ${PORT}`);
     });
   } catch (err) {
     console.error(err);

@@ -10,8 +10,8 @@ const controllerWrapper = require("../../helpers/controllerWrapper");
 
 // router.get("/", controllerWrapper(controllers.getAll));
 // router.get("/:letter", controllerWrapper(controllers.getById));
+router.get("/", controllerWrapper(controllers.getFind));
 router.get("/search", controllerWrapper(controllers.getBySearch));
-router.get("/get", controllerWrapper(controllers.getFind));
 router.get("/filter", controllerWrapper(controllers.getFilter));
 router.get("/lookup", controllerWrapper(controllers.getById));
 router.get("/count", controllerWrapper(controllers.getCount));

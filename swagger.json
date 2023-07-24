@@ -1,0 +1,359 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "version": "1.0.0",
+    "title": "Cocktail API",
+    "description": "API to retrieve cocktail information and details.",
+    "contact": {
+      "email": "n.khrystiuk@goit.ua"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3016/api/v1/cocktails"
+    }
+  ],
+  "tags": [
+    {
+      "name": "drinks",
+      "description": "Operations about drinks"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "Cocktails"
+        ],
+        "summary": "Get random cocktails",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/rQueryParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DrinkResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/filter/": {
+      "get": {
+        "tags": [
+          "Cocktails"
+        ],
+        "summary": "List available categories, glasses, ingredients, or alcoholic filters",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/cListParam"
+          },
+          {
+            "$ref": "#/components/parameters/gListParam"
+          },
+          {
+            "$ref": "#/components/parameters/iListParam"
+          },
+          {
+            "$ref": "#/components/parameters/aListParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FilterResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/search/": {
+      "get": {
+        "tags": [
+          "Cocktails"
+        ],
+        "summary": "Search for cocktails based on various filters",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/fQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/sQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/aQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/cQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/iQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/gQueryParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DrinkResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lookup/": {
+      "get": {
+        "tags": [
+          "Cocktails"
+        ],
+        "summary": "Lookup full cocktail details by id(s)",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/idQueryParam"
+          },
+          {
+            "$ref": "#/components/parameters/idsQueryParam"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DrinkResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/count/": {
+      "get": {
+        "tags": [
+          "Cocktails"
+        ],
+        "summary": "Get the number of cocktails",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CountResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DrinkResponse": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/Drink"
+        }
+      },
+      "Drink": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "example": "639b6de9ff77d221f190c57e"
+          },
+          "drink": {
+            "type": "string",
+            "example": "Lazy Coconut Paloma"
+          },
+          "thumb": {
+            "type": "string",
+            "example": "https://res.cloudinary.com/dec1shvoo/image/upload/v1689167144/cocktails-v1/drinks/Lazy_Coconut_Paloma.jpg"
+          }
+        }
+      },
+      "FilterResponse": {
+        "type": "object",
+        "properties": {
+          "categories": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "glasses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "ingredients": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "alcoholic": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "CountResponse": {
+        "type": "object",
+        "properties": {
+          "count": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "parameters": {
+      "rQueryParam": {
+        "in": "query",
+        "name": "r",
+        "schema": {
+          "type": "integer",
+          "default": 1
+        },
+        "description": "The number of random cocktails to retrieve"
+      },
+      "fQueryParam": {
+        "in": "query",
+        "name": "f",
+        "schema": {
+          "type": "string"
+        },
+        "description": "Filter drinks by first letter"
+      },
+      "sQueryParam": {
+        "in": "query",
+        "name": "s",
+        "schema": {
+          "type": "string"
+        },
+        "description": "Search drinks by name"
+      },
+      "aQueryParam": {
+        "in": "query",
+        "name": "a",
+        "schema": {
+          "type": "string"
+        },
+        "description": "Filter drinks by alcoholic (alcoholic/non alcoholic)"
+      },
+      "cQueryParam": {
+        "in": "query",
+        "name": "c",
+        "schema": {
+          "type": "string"
+        },
+        "description": "Filter drinks by category"
+      },
+      "iQueryParam": {
+        "in": "query",
+        "name": "i",
+        "schema": {
+          "type": "string"
+        },
+        "description": "Filter drinks by ingredients (comma-separated)"
+      },
+      "gQueryParam": {
+        "in": "query",
+        "name": "g",
+        "schema": {
+          "type": "string"
+        },
+        "description": "Filter drinks by glass type"
+      },
+      "cListParam": {
+        "in": "query",
+        "name": "c",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "list"
+          ]
+        },
+        "description": "List all available categories"
+      },
+      "gListParam": {
+        "in": "query",
+        "name": "g",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "list"
+          ]
+        },
+        "description": "List all available glass types"
+      },
+      "iListParam": {
+        "in": "query",
+        "name": "i",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "list"
+          ]
+        },
+        "description": "List all available ingredients"
+      },
+      "aListParam": {
+        "in": "query",
+        "name": "a",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "list"
+          ]
+        },
+        "description": "List all available alcoholic filters"
+      },
+      "idQueryParam": {
+        "in": "query",
+        "name": "id",
+        "schema": {
+          "type": "string"
+        },
+        "description": "The id of the cocktail to lookup"
+      },
+      "idsQueryParam": {
+        "in": "query",
+        "name": "ids",
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "style": "form",
+        "explode": true,
+        "description": "The ids of the cocktails to lookup (comma-separated)"
+      }
+    }
+  }
+}

@@ -6,7 +6,7 @@ const messages = {
   409: "Conflict",
 };
 
-function createError({ status, message = messages[status] }) {
+function createError(status, message = messages[status]) {
   const error = new Error(message);
 
   error.status = status;

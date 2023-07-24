@@ -23,7 +23,7 @@ const cocktailsSchema = new Schema(
     }
 );
 
-const Сocktail = model("cocktails", cocktailsSchema);
+const Сocktail = model("recipes", cocktailsSchema);
 
 module.exports = Сocktail;
 
