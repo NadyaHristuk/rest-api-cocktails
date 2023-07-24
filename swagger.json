@@ -9,6 +9,9 @@
     }
   },
   "servers": [
+     {
+      "url": "https://drinkify.onrender.com/api/v1/cocktails"
+    },
     {
       "url": "http://localhost:3016/api/v1/cocktails"
     }
